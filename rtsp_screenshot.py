@@ -1,15 +1,19 @@
 #!/usr/bin/env python3
-#Grab an image from an RTSP Stream. Returns cv2 image
+#Grab an image from an RTSP Stream. 
+#Returns cv2 image as numpy.ndarray. Can be written file using opencv.
+#Example
+#newimage = rtsp_screenshot(ipcam = '192.168.1.123', username = 'admin', password = 'yourpw', port = '554')
+#cv2.imwrite('testimg.jpg',newimage)
 import cv2 #open-cv lib is needed for RTSP stream.
 import os
 import sys
 from copy import deepcopy
 
-def rtsp_screenshot():
-    ipcam = '' #list of hosts to grab data from.
-    username = ''
-    password = ''
-    port = '554' #udp port number
+def rtsp_screenshot(ipcam = '', username = '', password = '', port = '554'):
+#    ipcam = '' #list of hosts to grab data from.
+#    username = ''
+#    password = ''
+#    port = '554' #udp port number
 
     try:
         if username != '' or password != '': 
@@ -37,3 +41,4 @@ def rtsp_screenshot():
         return("Unable to get data from camera. " + ipcam)
 
     return(returnimage)
+
